@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase';
 
  // Initialize Firebase
- var config = {
+ const config = {
     apiKey: "AIzaSyBjhpKwpAR3zQM7hzC2NX2oSrmO5nXHZcU",
     authDomain: "comments-test-task.firebaseapp.com",
     databaseURL: "https://comments-test-task.firebaseio.com",
@@ -18,3 +18,4 @@ import * as firebase from 'firebase';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+

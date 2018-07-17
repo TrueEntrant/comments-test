@@ -19,6 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-size: 16px;
 }
 .wrap .text .author {
     font-size: 40px;
@@ -35,4 +36,32 @@
     margin: 5px 0;
     max-width: 700px;
     width: 100%;
+}
+.edit {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.edit .edit-comment {
+    border: .5px solid grey;
+    width: 100%;
+    resize: none;
+    text-indent: 7px;
+    margin-bottom: 20px;
+    min-height: 20px;
+    align-self: flex-start;
+    margin: 0;
+    font-size: 16px;
+
+}
+.edit .edit-btn {
+    align-self: flex-end;
+    color: black;
+    padding: 1px 10px;
+    border: .5px solid grey;        
+    background: rgb(226, 223, 223);
+    cursor: pointer;
+    text-decoration: none;
 }

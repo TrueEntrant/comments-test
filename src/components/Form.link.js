@@ -1,10 +1,11 @@
 import React from 'react';
 import '../styles/Form.css'
+import { Link } from 'react-router-dom';
 
 
-const Form = (props) => {    
+const ReplyForm = (props) => {    
     return (
-    <form className={props.className} onSubmit={props.onSubmit} action='/'>
+    <form className={props.className} action='/' onSubmit={props.onSubmit}>
         <textarea 
             required name="comment" 
             id="area" 
@@ -24,14 +25,16 @@ const Form = (props) => {
         />
         <div className='buttons'>
             <div className='btn-cont'>
-                <label htmlFor='file' className='file-but'>File</label>
+                <label htmlFor='file1' className='file-but'>File</label>
             </div>
-            <input required id='file' onChange={props.onFileInput} type="file" accept='.jpg, .png'/>
+            <input required id='file1' onChange={props.onFileChange} type="file" accept='.jpg, .png'/>
 
+           
             <input type="submit" value="Comment"/>
+            
         </div>
     </form>
 );
 }
 
-export default Form;
+export default ReplyForm;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Form from '../components/Form';
+import ReplyForm from '../components/Form.link';
 
 
 
 
-class ReplyForm extends Component {
+class ReplyFormLogic extends Component {
   constructor(props) {
     super(props);
 
-    // this.sldfkgnl = React.createRef();
+    this.onFileChange = this.onFileChange.bind(this);
     this.onTextAreaChange = this.onTextAreaChange.bind(this);
     this.onTextInputChange = this.onTextInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -16,7 +16,7 @@ class ReplyForm extends Component {
   state = { 
     textArea : '',
     textInput : '',
-    // fileInput : ''
+    fileInput : ''
   }
 
   onTextAreaChange(e) {
@@ -31,38 +31,39 @@ class ReplyForm extends Component {
     });
   }
   
-//   onTextInputChange(e) {
-//     this.setState({
-//       fileInput : e.target.value
-//     });
-//   }
+  onFileChange(e) {
+    this.setState({
+      fileInput : e.target.files[0]
+    });
+  }
 
   onFormSubmit(event) {
-    
-     
-    const newComment = {
+    event.preventDefault();
+        
+    const newReply = {
         author : this.state.textInput,
         text : this.state.textArea,
-        replys: []
+        reply: [''],
+        avatar: this.state.fileInput
     }
-    
-    this.props.onSubmit(newComment, event);
 
+    this.props.onSubmit(newReply);
     this.setState({
         textArea : '',
-        textInput : ''
+        textInput : '',
+        fileInput : ''
     })
   }
 
   render() {
     return (
       <div className="rep-form-wrap">
-        <Form 
+        <ReplyForm 
           className="reply form"
           state={this.state} 
           onTextArea={this.onTextAreaChange}
           onTextInput={this.onTextInputChange}
-          // onFileInput={this.state.fileInput}
+          onFileChange={this.onFileChange}
           onSubmit={this.onFormSubmit}
         />
       </div>
@@ -70,4 +71,4 @@ class ReplyForm extends Component {
   }
 }
 
-export default ReplyForm;
+export default ReplyFormLogic;

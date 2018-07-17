@@ -7,7 +7,7 @@ class HeadForm extends Component {
   constructor(props) {
     super(props);
 
-    // this.sldfkgnl = React.createRef();
+    this.onFileChange = this.onFileChange.bind(this);
     this.onTextAreaChange = this.onTextAreaChange.bind(this);
     this.onTextInputChange = this.onTextInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -15,7 +15,7 @@ class HeadForm extends Component {
   state = { 
     textArea : '',
     textInput : '',
-    // fileInput : ''
+    fileInput : ''
   }
 
   onTextAreaChange(e) {
@@ -30,11 +30,12 @@ class HeadForm extends Component {
     });
   }
   
-//   onTextInputChange(e) {
-//     this.setState({
-//       fileInput : e.target.value
-//     });
-//   }
+  onFileChange(e) {
+    this.setState({
+      fileInput : e.target.files[0]
+    });
+
+  }
 
   onFormSubmit(event) {
     event.preventDefault();
@@ -42,13 +43,15 @@ class HeadForm extends Component {
     const newComment = {
         author : this.state.textInput,
         text : this.state.textArea,
-        reply: ['']
+        reply: [''],
+        avatar: this.state.fileInput
     }
 
     this.props.onSubmit(newComment);
     this.setState({
         textArea : '',
-        textInput : ''
+        textInput : '',
+        fileInput : ''
     })
   }
 
@@ -59,7 +62,7 @@ class HeadForm extends Component {
           state={this.state} 
           onTextArea={this.onTextAreaChange}
           onTextInput={this.onTextInputChange}
-          // onFileInput={this.state.fileInput}
+          onFileInput={this.onFileChange}
           onSubmit={this.onFormSubmit}
         />
     );

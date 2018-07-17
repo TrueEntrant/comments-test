@@ -7,13 +7,15 @@ import {Link} from 'react-router-dom';
 const Deleting = (props) => {    
   
     return (
-    <form className="delete-dialog" action="/" onSubmit={props.onSubmit}>
+    <div className="delete-dialog">
         <div className='container'>
             <p>Would you realy like to proceed?</p>
-            <input className='question' type="submit" value="Yes!"/>
+            <Link className='question' to='/' onClick={props.onSubmit} value="Yes!">
+                Yes!
+            </Link>
             <Link className='question' to='/'>No!</Link>
         </div>
-    </form>
+    </div>
 );
 }
 

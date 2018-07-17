@@ -9,7 +9,8 @@ class Delete extends Component {
         this.onDelete = this.onDelete.bind(this);
      }
 
-    onDelete() {
+    onDelete(e) {
+        e.preventDefault();
         this.props.onDelete();
     }
 
